@@ -176,7 +176,7 @@ button:active{transform:scale(.97)}
     <p id="ws" style="max-width:360px"></p>
     <button class="btn" id="b6">Thổi nến 🕯️</button>
     <div class="row">
-      <button class="btn ghost" id="b4">Mở lời nhắn bí mật</button>
+      <button class="btn hidden" id="b4">Mở lời nhắn bí mật</button>
       <button class="btn ghost" id="b5" aria-label="Chơi lại từ đầu">↺ Chơi lại</button>
     </div>
   </section>
@@ -402,16 +402,16 @@ function init4(){
   blown=false;
   $('hb').textContent=C.wish.title;$('d4').textContent=C.date.d+'.'+C.date.m+'.'+C.date.y;$('c4').innerHTML=con(true);
   later(function(){$('c4').firstChild.classList.add('lit')},300);$('ws').textContent=C.wish.text+' '+C.wish.ask;
-  $('scene').classList.remove('out');$('b6').classList.remove('hidden');$('b4').className='btn ghost';buildCake();
+  $('scene').classList.remove('out');$('b6').classList.remove('hidden');$('b4').className='btn hidden';buildCake();
   fire=900;fan();confettiRain();balloons(8);later(song,1300);clear(4);
 }
 function blow(){
   if(blown)return;blown=true;
-  $('scene').classList.add('out');$('b6').classList.add('hidden');$('b4').className='btn';$('ws').textContent=C.wish.blown;
+  $('scene').classList.add('out');$('b6').classList.add('hidden');$('b4').className='btn';reveal('b4');$('ws').textContent=C.wish.blown;
   chime();confettiBurst(W/2,H*.38,150);balloons(8);fire=500;
 }
 $('b6').onclick=blow;$('scene').onclick=blow;
-$('b4').onclick=function(){openMail()};
+$('b4').onclick=function(){if(blown)openMail()};
 $('b5').onclick=restart;
 function openMail(){
   var m=$('mail');m.classList.remove('hidden');
