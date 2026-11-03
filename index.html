@@ -21,8 +21,8 @@ background:radial-gradient(ellipse at 18% 8%,var(--purple) 0,transparent 60%),ra
 #prog i.on::after{transform:scaleX(1)}#prog i.cur::after{transform:scaleX(.35)}
 #lab{font-size:12.5px;color:var(--mute);min-width:3.6em;text-align:right}
 .ib{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--glass);color:var(--gold);font-size:16px;cursor:pointer;padding:0;margin:0}
-main{position:relative;z-index:2;max-width:520px;margin:0 auto;padding:0 20px 40px}
-.stage{display:none;min-height:calc(100vh - 80px);flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 0 24px}
+main{position:relative;z-index:2;max-width:520px;margin:0 auto;padding:0 20px calc(12px + env(safe-area-inset-bottom,0px))}
+.stage{display:none;min-height:calc(100vh - 72px);min-height:calc(100dvh - 72px);flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6px 0 14px}
 .stage.show{display:flex;animation:in .9s ease both}
 @keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 h1,h2{font-family:var(--serif);font-weight:600;margin:0;line-height:1.05}
@@ -36,7 +36,8 @@ button.btn.ghost{background:none;color:var(--gold);border:1px solid var(--line);
 button:active{transform:scale(.97)}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .hidden{display:none!important}
-.con{width:min(78vw,300px);height:auto;margin:14px auto 6px;overflow:visible}
+.con{width:min(78vw,300px,34vh);width:min(78vw,300px,34dvh);height:auto;margin:10px auto 4px;overflow:visible}
+#c1 .con{width:min(60vw,240px,24vh);width:min(60vw,240px,24dvh)}
 .con .ln{stroke:rgba(230,205,151,.16);stroke-width:.6;fill:none}
 .con .st{fill:#cfc4e8;opacity:.75;animation:tw 3s ease-in-out infinite}
 .con .st:nth-child(odd){animation-delay:-1.4s}
@@ -45,9 +46,9 @@ button:active{transform:scale(.97)}
 .con .an{fill:#ff8a5c;filter:drop-shadow(0 0 4px #ff8a5c);animation:tw 2.4s ease-in-out infinite}
 .con.big{width:min(60vw,230px)}
 @keyframes draw{to{stroke-dashoffset:0}}@keyframes tw{50%{opacity:.35}}
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;margin:14px 0 6px}
-.opt{font:inherit;font-size:16px;cursor:pointer;color:var(--ink);background:var(--glass);border:1px solid var(--line);border-radius:14px;padding:14px 8px;min-height:56px;display:flex;flex-direction:column;gap:2px;align-items:center}
-.opt b{font-family:var(--serif);font-size:24px;color:var(--gold);font-weight:500}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;margin:10px 0 4px}
+.opt{font:inherit;font-size:15px;cursor:pointer;color:var(--ink);background:var(--glass);border:1px solid var(--line);border-radius:14px;padding:10px 4px;min-height:56px;display:flex;flex-direction:column;gap:2px;align-items:center;justify-content:center}
+.opt b{font-family:var(--serif);font-size:22px;color:var(--gold);font-weight:500;line-height:1}
 .opt.bad{border-color:#d86b7a;animation:sh .4s}.opt.good{border-color:var(--gold);background:rgba(230,205,151,.16)}
 .fb{min-height:3.2em;font-size:15px;color:var(--mute);margin:4px 0;line-height:1.5}
 @keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
@@ -62,16 +63,16 @@ button:active{transform:scale(.97)}
 .card .b{transform:rotateY(180deg);background:linear-gradient(160deg,var(--purple),#15174a);border:1px solid var(--gold2);color:var(--gold);font-size:22px}
 .card.ok .f{border-color:var(--gold);box-shadow:0 0 18px rgba(230,205,151,.5)}
 .timer{font-family:var(--serif);font-size:44px;color:var(--gold);line-height:1}
-.chest{width:min(70vw,230px);margin:6px auto}
+.chest{width:min(70vw,230px,28vh);width:min(70vw,230px,28dvh);margin:4px auto;display:block}
 .lid{transform-box:fill-box;transform-origin:0 100%;transition:transform 1s cubic-bezier(.3,1.3,.5,1)}
 .open .lid{transform:rotate(-62deg)}
 .burst{position:absolute;left:50%;top:38%;width:10px;height:10px;border-radius:50%;opacity:0;transform:translate(-50%,-50%)}
 .open~.burst,.burst.go{animation:burst 1.6s ease-out forwards}
 @keyframes burst{0%{opacity:.9;box-shadow:0 0 0 0 #fff4d6}100%{opacity:0;box-shadow:0 0 0 260px rgba(230,205,151,0)}}
-.slots{display:flex;gap:10px;justify-content:center;margin:10px 0}
-.slot{width:52px;height:62px;border:1px solid var(--line);border-radius:12px;background:var(--glass);font-family:var(--serif);font-size:34px;color:var(--gold);display:flex;align-items:center;justify-content:center}
-.pad{display:grid;grid-template-columns:repeat(3,72px);gap:10px;justify-content:center;margin:8px 0}
-.pad button{font-family:var(--serif);font-size:28px;height:56px;border-radius:14px;border:1px solid var(--line);background:var(--glass);color:var(--ink);cursor:pointer;padding:0}
+.slots{display:flex;gap:10px;justify-content:center;margin:8px 0}
+.slot{width:50px;height:56px;border:1px solid var(--line);border-radius:12px;background:var(--glass);font-family:var(--serif);font-size:34px;color:var(--gold);display:flex;align-items:center;justify-content:center}
+.pad{display:grid;grid-template-columns:repeat(3,72px);gap:8px;justify-content:center;margin:6px 0}
+.pad button{font-family:var(--serif);font-size:28px;height:clamp(44px,7vh,56px);height:clamp(44px,7dvh,56px);border-radius:14px;border:1px solid var(--line);background:var(--glass);color:var(--ink);cursor:pointer;padding:0}
 .wrap{position:relative;width:100%}
 #mail{position:fixed;inset:0;z-index:9;background:rgba(6,8,26,.86);display:flex;align-items:center;justify-content:center;padding:18px;animation:in .5s both}
 .env{position:relative;width:min(80vw,300px);height:200px;background:linear-gradient(160deg,#3a2a6a,#241a4a);border:1px solid var(--gold2);border-radius:6px;box-shadow:0 20px 50px #000}
@@ -79,13 +80,19 @@ button:active{transform:scale(.97)}
 .env.op .flap{transform:rotateX(180deg)}
 .seal{position:absolute;left:50%;top:92px;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:radial-gradient(#f4e2b4,var(--gold2));color:#2a1250;display:flex;align-items:center;justify-content:center;transition:opacity .4s}
 .env.op .seal{opacity:0}
-.letter{max-height:86vh;overflow:auto;width:100%;max-width:440px;background:#f4ecd8;color:#2a1f3d;border-radius:8px;padding:28px 24px;text-align:left;box-shadow:0 20px 60px #000;animation:in .9s both}
+.letter{max-height:86vh;max-height:86dvh;overflow:auto;width:100%;max-width:440px;background:#f4ecd8;color:#2a1f3d;border-radius:8px;padding:28px 24px;text-align:left;box-shadow:0 20px 60px #000;animation:in .9s both}
 .letter p{color:#2a1f3d;font-family:var(--serif);font-size:20px;line-height:1.55;margin:0 0 14px;opacity:0;animation:in .9s forwards}
 .letter .sg{font-style:italic;text-align:right;color:#6a4a1a}
 /* ---- Hiệu ứng 3D: nghiêng theo tay/chuột, bánh kem 3D, bóng bay ---- */
 .con,.chest{transform:perspective(700px) rotateY(calc(var(--tx,0)*12deg)) rotateX(calc(var(--ty,0)*-9deg));transition:transform .2s ease-out}
-.scene{position:relative;width:min(88vw,300px);height:300px;margin:0 auto;perspective:900px;cursor:pointer}
-.tilt{position:absolute;left:50%;top:74%;width:0;height:0;transform-style:preserve-3d;transform:rotateX(calc(60deg + var(--ty,0)*-10deg)) rotateZ(calc(var(--tx,0)*14deg));transition:transform .2s ease-out}
+.scene{position:relative;width:min(88vw,300px);height:min(300px,38vh);height:min(300px,38dvh);margin:0 auto;perspective:900px;cursor:pointer}
+.tilt{position:absolute;left:50%;top:74%;width:0;height:0;transform-style:preserve-3d;scale:var(--ck,1);transform:rotateX(calc(60deg + var(--ty,0)*-10deg)) rotateZ(calc(var(--tx,0)*14deg));transition:transform .2s ease-out}
+/* Chòm sao ở màn cuối nằm phía sau bánh kem để không đẩy nút xuống dưới */
+#cw{position:relative;width:100%}
+#c4{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.5;pointer-events:none}
+#c4 .con{margin:0;width:min(60vw,230px,34vh);width:min(60vw,230px,34dvh)}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.row .btn{padding:12px 20px}
 .sway{position:absolute;left:0;top:0;transform-style:preserve-3d;animation:sway 7s ease-in-out infinite alternate}
 @keyframes sway{from{transform:rotateZ(-14deg)}to{transform:rotateZ(14deg)}}
 .dk{position:absolute;left:0;top:0;border-radius:50%}
@@ -98,6 +105,9 @@ button:active{transform:scale(.97)}
 .bl{position:fixed;bottom:-90px;width:46px;height:58px;border-radius:50% 50% 48% 48%;background:radial-gradient(circle at 34% 28%,#fff 0,var(--c) 40%,rgba(10,16,48,.45) 120%);z-index:3;pointer-events:none;animation:bl linear forwards;box-shadow:0 0 18px rgba(230,205,151,.25)}
 .bl::after{content:"";position:absolute;left:50%;top:100%;width:1px;height:46px;background:rgba(230,205,151,.5)}
 @keyframes bl{to{transform:translate(var(--dx),-135vh)}}
+/* ---- Điện thoại màn hình thấp: thu gọn để mỗi màn vừa một khung, không phải cuộn ---- */
+@media (max-height:760px){.scene{--ck:.82}h1{font-size:clamp(40px,11vw,60px)}.date{margin:8px 0 2px;font-size:21px}p{margin-bottom:10px;line-height:1.55}h2{margin-bottom:6px}button.btn{margin-top:8px}.fb{min-height:2.8em}.chest{width:min(70vw,230px,22vh);width:min(70vw,230px,22dvh)}.slot{height:50px}}
+@media (max-height:640px){.scene{--ck:.7}.grid{gap:8px;margin:8px 0}.mute{font-size:13.5px}}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}.sway,.fl{animation:none!important}.bl{display:none}}
 </style>
 </head>
@@ -161,12 +171,14 @@ button:active{transform:scale(.97)}
     <div class="mute" style="letter-spacing:.3em">THE BIRTHDAY WISH</div>
     <h1 id="hb"></h1>
     <div class="date" id="d4"></div>
-    <div class="scene" id="scene" aria-label="Chiếc bánh sinh nhật 3D, chạm để thổi nến" role="img"><div class="tilt"><div class="sway" id="cake"></div></div></div>
-    <div id="c4"></div>
+    <div id="cw"><div id="c4"></div>
+    <div class="scene" id="scene" aria-label="Chiếc bánh sinh nhật 3D, chạm để thổi nến" role="img"><div class="tilt"><div class="sway" id="cake"></div></div></div></div>
     <p id="ws" style="max-width:360px"></p>
     <button class="btn" id="b6">Thổi nến 🕯️</button>
-    <button class="btn ghost" id="b4">Mở lời nhắn bí mật</button>
-    <button class="btn ghost" id="b5">Chơi lại từ đầu</button>
+    <div class="row">
+      <button class="btn ghost" id="b4">Mở lời nhắn bí mật</button>
+      <button class="btn ghost" id="b5" aria-label="Chơi lại từ đầu">↺ Chơi lại</button>
+    </div>
   </section>
 </main>
 <div id="mail" class="hidden"></div>
@@ -214,15 +226,30 @@ var cleared=0,cur=0,soundOn=false,AC=null,timers=[];
 function later(f,ms){var t=setTimeout(f,ms);timers.push(t);return t}
 
 /* ---------- Âm thanh (tạo bằng code, mặc định tắt) ---------- */
+function ctx(){AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state!=='running')AC.resume();return AC}
+/* iPhone tắt tiếng Web Audio khi gạt nút im lặng và trình duyệt điện thoại chỉ cho phát sau lần chạm đầu tiên.
+   Lần chạm đầu: mở khóa AudioContext, chuyển phiên âm thanh sang "playback" và phát một đoạn im lặng lặp lại để giữ phiên đó. */
+var keep=null;
+function silentWav(){var n=4000,b=new Uint8Array(44+n),v=new DataView(b.buffer),w=function(o,s){for(var i=0;i<s.length;i++)b[o+i]=s.charCodeAt(i)};
+  w(0,'RIFF');v.setUint32(4,36+n,true);w(8,'WAVEfmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,8000,true);v.setUint32(28,8000,true);v.setUint16(32,1,true);v.setUint16(34,8,true);w(36,'data');v.setUint32(40,n,true);b.fill(128,44);
+  var s='';for(var i=0;i<b.length;i++)s+=String.fromCharCode(b[i]);return 'data:audio/wav;base64,'+btoa(s)}
+function unlock(){
+  if(!soundOn)return;
+  try{if(navigator.audioSession)navigator.audioSession.type='playback'}catch(e){}
+  try{var a=ctx(),s=a.createBufferSource();s.buffer=a.createBuffer(1,1,22050);s.connect(a.destination);s.start(0)}catch(e){}
+  try{if(!keep){keep=new Audio(silentWav());keep.loop=true;keep.setAttribute('playsinline','');keep.disableRemotePlayback=true}if(keep.paused){var p=keep.play();if(p&&p.catch)p.catch(function(){})}}catch(e){}
+}
+['touchstart','touchend','pointerdown','click','keydown'].forEach(function(ev){document.addEventListener(ev,unlock,{capture:true,passive:true})});
+document.addEventListener('visibilitychange',function(){if(document.hidden){if(keep)keep.pause()}else if(soundOn&&AC){AC.resume()}});
 function tone(fs,type,gain,step){
   if(!soundOn)return;
-  try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();var t=AC.currentTime;
+  try{ctx();var t=AC.currentTime;
     fs.forEach(function(f,i){var o=AC.createOscillator(),g=AC.createGain();o.type=type||'sine';o.frequency.value=f;
       g.gain.setValueAtTime(0,t+i*step);g.gain.linearRampToValueAtTime(gain||.15,t+i*step+.02);g.gain.exponentialRampToValueAtTime(.001,t+i*step+1.2);
       o.connect(g);g.connect(AC.destination);o.start(t+i*step);o.stop(t+i*step+1.3)})}catch(e){}
 }
 var chime=function(){tone([659,784,988,1319],'sine',.14,.12)},err=function(){tone([196,165],'triangle',.12,.12)},fan=function(){tone([523,659,784,1047,1319,1568],'sine',.16,.14)};
-function setSound(on){soundOn=on;$('snd').textContent=on?'🔊':'🔇';$('snd').setAttribute('aria-pressed',on);$('snd').setAttribute('aria-label',on?'Tắt âm thanh':'Bật âm thanh')}
+function setSound(on){soundOn=on;if(!on&&keep)keep.pause();$('snd').textContent=on?'🔊':'🔇';$('snd').setAttribute('aria-pressed',on);$('snd').setAttribute('aria-label',on?'Tắt âm thanh':'Bật âm thanh')}
 $('snd').onclick=function(){setSound(!soundOn);if(soundOn)chime()};
 
 /* ---------- Chòm sao SVG ---------- */
@@ -272,7 +299,7 @@ function buildCake(){
 /* ---- Bài Happy Birthday (tạo bằng code) ---- */
 function song(){
   if(!soundOn)return;
-  try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();
+  try{ctx();
     var T=.42,at=AC.currentTime+.1,m=[[392,.75],[392,.25],[440,1],[392,1],[523,1],[494,2],[392,.75],[392,.25],[440,1],[392,1],[587,1],[523,2],[392,.75],[392,.25],[784,1],[659,1],[523,1],[494,1],[440,1],[698,.75],[698,.25],[659,1],[523,1],[587,1],[523,2]];
     m.forEach(function(n){var o=AC.createOscillator(),g=AC.createGain();o.type='triangle';o.frequency.value=n[0];g.gain.setValueAtTime(0,at);g.gain.linearRampToValueAtTime(.16,at+.03);g.gain.exponentialRampToValueAtTime(.001,at+n[1]*T);o.connect(g);g.connect(AC.destination);o.start(at);o.stop(at+n[1]*T+.05);at+=n[1]*T})}catch(e){}
 }
@@ -299,6 +326,8 @@ function go(n){
   [init0,init1,init2,init3,init4][n]();
 }
 function clear(n){if(cleared<n+1)cleared=n+1;prog()}
+/* Hiện nút và tự cuộn tới nếu nút nằm ngoài màn hình */
+function reveal(id){var b=$(id);b.classList.remove('hidden');requestAnimationFrame(function(){var r=b.getBoundingClientRect();if(r.bottom>innerHeight-8)b.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'})})}
 /* Thanh tiến trình chỉ tính 3 nhiệm vụ: Constellation, Memory, Vault (màn mở đầu và màn điều ước không tính) */
 function prog(){var d=Math.max(0,Math.min(3,cleared-1)),cu=(cur>=1&&cur<=3&&cur>cleared-1)?cur-1:-1;[].forEach.call($('prog').children,function(e,i){e.className=i<d?'on':(i===cu?'cur':'')});$('lab').textContent=d+'/3'}
 
@@ -315,7 +344,7 @@ function init1(){
       if(op.n!==C.quiz.correct){b.classList.add('bad');$('f1').textContent=C.quiz.wrong[op.n]||'Chưa đúng, thử lại nhé.';err();later(function(){b.classList.remove('bad')},450);return}
       b.classList.add('good');[].forEach.call(o.children,function(x){x.disabled=true});
       $('c1').firstChild.classList.add('lit');$('f1').textContent=C.quiz.ok;chime();clear(1);
-      later(function(){$('b1').classList.remove('hidden')},2400)};
+      later(function(){reveal('b1')},2400)};
     o.appendChild(b)});
 }
 $('b1').onclick=function(){go(2)};
@@ -340,7 +369,7 @@ function pick(b){
   if(!first){first=b;return}
   var a=first;first=null;lock=true;
   if(a.dataset.s===b.dataset.s){a.classList.add('ok');b.classList.add('ok');matched++;chime();lock=false;
-    if(matched===(C.memory.photos&&C.memory.photos.length||C.memory.icons.length)){$('f2').textContent=C.memory.done+(miss?' (Số lần nhầm: '+miss+')':' Không nhầm lần nào.');clear(2);later(function(){$('b2').classList.remove('hidden')},900)}else $('f2').textContent='Đúng một cặp.'}
+    if(matched===(C.memory.photos&&C.memory.photos.length||C.memory.icons.length)){$('f2').textContent=C.memory.done+(miss?' (Số lần nhầm: '+miss+')':' Không nhầm lần nào.');clear(2);later(function(){reveal('b2')},900)}else $('f2').textContent='Đúng một cặp.'}
   else{miss++;err();$('f2').textContent='Chưa khớp, nhớ lại nào.';later(function(){a.classList.remove('up');b.classList.remove('up');lock=false},750)}
 }
 $('b2').onclick=function(){go(3)};
@@ -361,7 +390,7 @@ function key(k){
   draw();if(code.length===C.vault.code.length&&k!=='⌫')check();
 }
 function check(){
-  if(code===C.vault.code){vdone=true;$('f3').textContent=C.vault.ok;$('chest').classList.add('open');$('burst').classList.add('go');chime();clear(3);$('pd').classList.add('hidden');later(function(){$('b3').classList.remove('hidden')},1400)}
+  if(code===C.vault.code){vdone=true;$('f3').textContent=C.vault.ok;$('chest').classList.add('open');$('burst').classList.add('go');chime();clear(3);$('pd').classList.add('hidden');later(function(){reveal('b3')},1400)}
   else{$('f3').textContent=C.vault.wrong[Math.min(tries,C.vault.wrong.length-1)];tries++;err();$('sl').classList.add('shake');later(function(){$('sl').classList.remove('shake');code='';draw()},450)}
 }
 document.addEventListener('keydown',function(e){if(cur!==3)return;if(/^[0-9]$/.test(e.key))key(e.key);else if(e.key==='Backspace')key('⌫');else if(e.key==='Enter')key('↵')});
